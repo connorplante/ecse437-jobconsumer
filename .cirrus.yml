@@ -1,8 +1,16 @@
 task:
-  name: Cirrus CI
+  name: Cirrus CI 1
+  skip: $CIRRUS_BRANCH =~ 'documentation/.*' || $CIRRUS_CHANGE_MESSAGE =~ 'Doc Change:'
   container:
     image: maven:latest
   maven_cache:
     folder: ~/.m2
   test_script: mvn test -B
   
+task:
+  name: Cirrus CI 2
+  container:
+    image: maven:latest
+  maven_cache:
+    folder: ~/.m2
+  test_script: mvn test -B
